@@ -34,10 +34,6 @@ nav a {
   color: #090101;
 }
 
-nav a:hover {
-  color: #15559e;
-}
-
 .btn {
   background-color: #4A90E2;
   color: white;
