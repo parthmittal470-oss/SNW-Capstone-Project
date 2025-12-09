@@ -11,23 +11,26 @@
   <header class="navbar">
     <div class="logo">NovaCare</div>
     <nav>
-      <a href="#">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#experts">Experts</a>
-      <a href="#contact">Contact</a>
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#experts" class="nav-link">Experts</a>
+      <a href="#contact" class="nav-link">Contact</a>
     </nav>
-    <button class="btn">Get Started</button>
+    <button class="btn login-btn" id="loginBtn">Login</button>
+    <div class="mobile-menu" id="mobileMenu">☰</div>
   </header>
 
   <!-- Hero Section -->
-  <section class="hero">
+  <section id="home" class="hero">
     <div class="hero-text">
       <h1>Your Health. Our Priority.</h1>
       <p>Connecting you with trusted doctors and wellness experts anytime, anywhere.</p>
-      <button class="btn">Book Appointment</button>
+      <button class="btn" id="bookBtn">Book Appointment</button>
     </div>
-
+    <div class="hero-img">
+      <img src="https://cdn.britannica.com/12/130512-004-AD0A7CA4/campus-Riverside-Ottawa-The-Hospital-Ont.jpg">
+    </div>
   </section>
 
   <!-- About Section -->
@@ -40,21 +43,25 @@
   <section id="services" class="services">
     <h2>Our Services</h2>
     <div class="service-grid">
-      <div class="card">
+      <div class="card" data-service="virtual">
         <h3>Virtual Consultation</h3>
         <p>Connect with certified doctors through secure video sessions.</p>
+        <button class="service-btn">Book Now</button>
       </div>
-      <div class="card">
+      <div class="card" data-service="mental">
         <h3>Mental Health</h3>
         <p>Access licensed therapists for emotional and mental wellness.</p>
+        <button class="service-btn">Book Now</button>
       </div>
-      <div class="card">
-        <h3>Women’s Health</h3>
+      <div class="card" data-service="women">
+        <h3>Women's Health</h3>
         <p>Specialized care for women at every stage of life.</p>
+        <button class="service-btn">Book Now</button>
       </div>
-      <div class="card">
+      <div class="card" data-service="family">
         <h3>Family Care</h3>
         <p>Holistic healthcare services for your entire family.</p>
+        <button class="service-btn">Book Now</button>
       </div>
     </div>
   </section>
@@ -63,36 +70,80 @@
   <section id="experts" class="experts">
     <h2>Meet Our Experts</h2>
     <div class="expert-grid">
-      <div class="expert-card">
-        <img src=https://www.meitra.com/public/upload_file/67fbd47edc6d01744557182.jpg alt="Dr. Smith">
+      <div class="expert-card" data-expert="mohit">
+        <img src="https://www.meitra.com/public/upload_file/67fbd47edc6d01744557182.jpg" alt="Dr. Mohit Chaudhary">
         <h3>Dr. Mohit Chaudhary</h3>
         <p>General Physician</p>
+        <button class="expert-btn">Book Appointment</button>
       </div>
-      <div class="expert-card">
-        <img src=https://starhospitalsproduction.s3.amazonaws.com/dZmAgKYV2eCfSV8tqxqzOxDYrEqmkfFrnoel3pVo.jpg alt="Dr. Sharma">
+      <div class="expert-card" data-expert="ajay">
+        <img src="https://starhospitalsproduction.s3.amazonaws.com/dZmAgKYV2eCfSV8tqxqzOxDYrEqmkfFrnoel3pVo.jpg" alt="Dr. Ajay Sharma">
         <h3>Dr. Ajay Sharma</h3>
         <p>Mental Health Specialist</p>
+        <button class="expert-btn">Book Appointment</button>
       </div>
-      <div class="expert-card">
-        <img src=https://images.unsplash.com/photo-1659353888906-adb3e0041693?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVtYWxlJTIwZG9jdG9yfGVufDB8fDB8fHww alt=""Dr. Singh>
+      <div class="expert-card" data-expert="ashima">
+        <img src="https://images.unsplash.com/photo-1659353888906-adb3e0041693?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVtYWxlJTIwZG9jdG9yfGVufDB8fDB8fHww" alt="Dr. Ashima Singh">
         <h3>Dr. Ashima Singh</h3>
         <p>Women's Health Expert</p>
+        <button class="expert-btn">Book Appointment</button>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <h2>Get in Touch</h2>
-    <p>Ready to start your wellness journey? Reach out today!</p>
-    <button class="btn">Contact Us</button>
-  </section>
+  <!-- Appointment Modal -->
+  <div class="modal" id="appointmentModal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modalTitle">Book Appointment</h2>
+      <form id="appointmentForm">
+        <input type="text" id="patientName" placeholder="Full Name" required>
+        <input type="tel" id="phone" placeholder="Phone Number" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <select id="serviceSelect" required>
+          <option value="">Select Service</option>
+          <option value="virtual">Virtual Consultation</option>
+          <option value="mental">Mental Health</option>
+          <option value="women">Women's Health</option>
+          <option value="family">Family Care</option>
+        </select>
+        <input type="datetime-local" id="appointmentDate" required>
+        <button type="submit" class="btn">Confirm Booking</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal" id="loginModal">
+    <div class="login-content">
+      <span class="close">&times;</span>
+      <h2>Login / Register</h2>
+      <form id="loginForm">
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit" class="btn">Login</button>
+        <p class="toggle-auth">Don't have an account? <span>Register</span></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div class="modal success-modal" id="successModal">
+    <div class="success-content">
+      <h2>✓ Success!</h2>
+      <p id="successMessage"></p>
+      <button class="btn" id="closeSuccess">Close</button>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer>
     <p>© 2025 NovaCare. All rights reserved.</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
+
 
 
